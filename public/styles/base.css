@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+:root {
+    --ease-out-slow: cubic-bezier(0, 0, 0.3, 1);
+    --duration-extra-long: 600ms;
+    --animation-slide-in: slideIn var(--duration-extra-long) var(--ease-out-slow) forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(2rem);
+        opacity: 0.01;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+html {
+    box-sizing: border-box;
+    font-size: calc(var(--font-body-scale) * 62.5%);
+    height: 100%;
+}
+
+body {
+    font-family: Raleway;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 100%;
+    min-height: 100%;
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.06rem;
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@font-face {
+    font-family: "Raleway";
+    font-style: italic;
+    font-display: fallback;
+    src: url('/assets/Raleway-Italic.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "Raleway";
+    font-style: normal;
+    font-display: fallback;
+    src: url('/assets/Raleway-Normal.ttf') format("truetype");
+}
+
+.button {
+    padding: 10px;
+    background: #5f91df;
+    border-radius: 8px;
+    line-height: 15px;
+    border: 2px solid #5f91df;
+    transition: all .3s;
+    font-weight: 600;
+    color: #fff;
+    width: fit-content;
+    font-family: Raleway;
+}
+
+.button:hover {
+    background: transparent;
+    color: #5f91df;
+    cursor: pointer;
+}
