@@ -1,0 +1,33 @@
+@media screen and (max-width: 768px) {
+
+    .section-header__menu-drawer,
+    mega-menu {
+        display: flex;
+    }
+
+    sticky-header mega-menu {
+        top: -100%;
+    }
+
+    mega-menu {
+        transition: all .5s;
+        position: fixed;
+        z-index: 9;
+        background: #000;
+        width: 100%;
+        height: fit-content;
+        padding: 15px 15px 40px;
+        border-radius: 0 0 22px 22px;
+    }
+
+    
+    sticky-header.header-wrapper--expanded mega-menu {
+        top: var(--header-height);
+
+    }
+
+    .header__menu-item{
+        color: #fff;
+        text-decoration: none;
+    }
+}

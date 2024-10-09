@@ -1,0 +1,22 @@
+link(rel='stylesheet' href='/styles/section-hero-banner.css')
+
+section.hero-banner
+  video.hero-banner__ground-video(autoplay muted loop playsinline)
+    source(src='/assets/hero-banner-bg-desktop.MOV' type='video/mp4')
+
+  .hero-banner__banner-content
+    text-switcher.banner-content__heading-wrapper 
+      span.banner-content__heading Transform the way you
+      div.banner-content__heading-animation-wrapper
+        span.banner-content__heading--animate-item.animate-item--slide-in.schedule-success 
+          span.animate-item__part schedule 
+          span.animate-item__part success
+        span.banner-content__heading--animate-item.plan-nights 
+          span.animate-item__part plan 
+          span.animate-item__part your 
+          span.animate-item__part nights
+        span.banner-content__heading--animate-item.take-reservations 
+          span.animate-item__part take 
+          span.animate-item__part reservations
+    p.banner-content__subheading Simplify your bookings, elevate your service.
+    a.banner-content__cta-button.button BOOK YOUR TABLE

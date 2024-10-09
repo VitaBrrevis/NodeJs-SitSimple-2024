@@ -1,0 +1,126 @@
+.section-header {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    z-index: 10;
+    padding: 5px 50px;
+    transition: all .5s;
+    background: transparent;
+}
+
+.section-header.scrolled-past-header {
+    position: fixed;
+    backdrop-filter: blur(50px);
+    top: 0;
+}
+
+.section-header.section-header-hidden {
+    top: calc(-1 * var(--header-height));
+}
+
+.section-header-hidden.menu-open {
+    top: 0;
+}
+
+.section-header.animate {
+    transition: top 0.15s ease-out;
+}
+
+.section-group-header-group {
+    z-index: 11;
+}
+
+.section-header~.section-group-header-group {
+    z-index: initial;
+}
+
+.section-header__logo-wrapper img {
+    max-width: 101px;
+    height: auto;
+}
+
+.section-header__logo-wrapper,
+.section-header__header-navigation .header-navigation__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-family: Raleway;
+    text-decoration: none;
+}
+
+.section-header__logo-wrapper {
+    color: #fff;
+}
+
+.section-header__header-navigation .header-navigation__item:not(.header-navigation__item--button) {
+    color: #fff;
+    font-weight: 400;
+}
+
+.section-header__header-navigation {
+    display: flex;
+    list-style-type: none;
+    gap: 15px;
+}
+
+.header-navigation__item {
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.section-header__header-navigation .header-navigation__item {
+    font-size: 16px;
+}
+
+.header-navigation__item:not(.header-navigation__item--button)::after {
+    content: "";
+    width: 0;
+    bottom: 0;
+    background: #fff;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    transition: all .3s;
+    border-radius: 50%;
+}
+
+.header-navigation__item:not(.header-navigation__item--button):hover::after {
+    width: 100%;
+}
+
+.section-header__menu-drawer,
+mega-menu {
+    display: none;
+}
+
+@media screen and (max-width: 768px){
+    .section-header__menu-drawer,
+    mega-menu {
+        display: flex;
+    }
+
+    .section-header__header-navigation-wrapper{
+        display: none;
+    }
+
+    .section-header{
+        padding: 5px 15px;
+    }
+
+    sticky-header.header-wrapper--expanded .section-header{
+        background: #000;
+    }
+
+    .section-header__logo-wrapper img {
+        max-width: 75px;
+    }
+
+    .section-header__logo-wrapper{
+        font-size: 18px;
+    }
+}

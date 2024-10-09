@@ -1,0 +1,20 @@
+link(rel='stylesheet' href='/styles/section-header.css')
+sticky-header.header-wrapper
+    header.section-header
+        a.section-header__logo-wrapper(href='/')
+            img(src='/assets/logo.png' alt='Site Logo').section-header__logo 
+            |  SitSimple  
+
+        nav.section-header__header-navigation-wrapper
+            ul.section-header__header-navigation
+                li.header-navigation__item-wrapper
+                    a(href='/').header-navigation__item List Your Restaurant
+                li.header-navigation__item-wrapper
+                    a(href='/reserve').header-navigation__item Book Your Table
+                li.header-navigation__item-wrapper
+                    a(href='/login').header-navigation__item.header-navigation__item--button.button LOGIN
+        mega-menu-opener.section-header__menu-drawer
+            .section-header__menu-icons
+                include ../snippets/icon-cross
+    mega-menu 
+        include ../snippets/header-drawer

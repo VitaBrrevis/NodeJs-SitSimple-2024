@@ -1,0 +1,22 @@
+link(rel='stylesheet', href='/styles/section-footer.css')
+- const footerWidth = `calc(100% / (${footerContent.length + 1}))`;
+style(type="text/css").
+  @media screen  and (min-width: 769px){
+    .footer-section__island {
+      max-width: #{footerWidth};
+    }
+  }
+footer.footer-section
+    .footer-section__info.footer-section__island
+       a.footer-section__logo-wrapper(href='/')
+            img(src='/assets/logo.png' alt='Site Logo').footer-section__logo 
+            |  SitSimple  
+    each section in footerContent
+        .footer-section__navigation.footer-section__island
+          h3.footer-section__navigation-title= section.title
+          ul.footer-section__navigation-list
+            each link in section.links
+              li.footer-section__navigation-item-wrapper
+                a(href='#').footer-section__navigation-item= link
+    .footer-section__copyright
+        | © 2024 SitSimple
