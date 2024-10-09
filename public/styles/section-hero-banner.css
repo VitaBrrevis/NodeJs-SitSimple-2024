@@ -1,0 +1,126 @@
+section.hero-banner {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    margin-top: calc(-1* var(--header-height));
+    min-height: 650px;
+}
+
+video.hero-banner__ground-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.hero-banner__banner-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 50px;
+}
+
+.banner-content__heading-wrapper {
+    font-size: 66px;
+    margin: 0;
+    line-height: 1;
+    padding: 0;
+    font-family: Raleway;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-content__subheading {
+    font-family: Raleway;
+    font-size: 16px;
+}
+
+.banner-subheading {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.banner-content__cta-button {
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.banner-content__heading {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.banner-content__heading-animation-wrapper {
+    position: relative;
+    width: 100%;
+    height: 66px;
+    margin-top: -10px;
+}
+
+.banner-content__heading--animate-item {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.banner-content__heading--animate-item.active {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.banner-content__heading--animate-item.exiting {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+}
+
+.banner-content__heading--animate-item.active {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.banner-content__heading--animate-item.exiting {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+}
+
+.animate-item__part {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.animate-item__part.active {
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px){
+    .banner-content__heading,
+    .banner-content__heading-animation-wrapper{
+        font-size: 35px;
+        margin-top: 0;
+    }
+
+    .hero-banner__banner-content{
+        padding: 0 15px;
+    }
+
+    .banner-content__subheading{
+        margin-top: -40px;
+    }
+}
