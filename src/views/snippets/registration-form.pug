@@ -6,9 +6,24 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
     body
         .registration-container
-            h1 Register Now!
-            form(action="/submit-registration", method="post")
-                input(type="text" placeholder="Enter your name" required)
-                input(type="email" placeholder="Enter your email" required)
-                input(type="password" placeholder="Enter your password" required)
+            h1 Register Your Restaurant!
+            form(action="/submit-registration", method="post", enctype="multipart/form-data")
+                .form-group
+                    label(for="establishmentName") Name of the restaurant
+                    input#establishmentName(type="text" name="establishmentName" required)
+                .form-group
+                    label(for="email") Email address
+                    input#email(type="email" name="email" required)
+                .form-group
+                    label(for="phone") Phone number
+                    input#phone(type="tel" name="phone" required)
+                .form-group
+                    label(for="socialMedia") Social media links (optional)
+                    input#socialMedia(type="url" name="socialMedia")
+                .form-group
+                    label(for="website") Website link (optional)
+                    input#website(type="url" name="website")
+                .form-group
+                    label(for="photo") Restaurant photo
+                    input#photo(type="file" name="photo" accept="image/*" required)
                 button.button(type="submit") Register
