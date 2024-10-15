@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@eslint/js": "^9.10.0",
+    "@types/node": "^22.7.5",
     "eslint": "^9.10.0",
     "globals": "^15.9.0",
     "husky": "^9.1.6",
@@ -10,6 +11,14 @@
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.pug",
     "prepare": "husky install",
-    "test": "echo \"No tests available\" && exit 0"
+    "test": "echo \"No tests available\" && exit 0",
+    "start": "nest start",
+    "build": "nest build"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/platform-express": "^10.4.4",
+    "pug": "^3.0.3"
   }
 }
