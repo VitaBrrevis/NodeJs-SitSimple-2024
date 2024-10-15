@@ -2,10 +2,14 @@ doctype html
 html
     head
         title SitSimple1
-        link(rel='stylesheet', href='/styles/base.css')
+        link(rel='stylesheet', href='/styles/restaurant-registration.css')
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    body
-        h1 Welcome to SitSimple!
-        p This is a simple text displayed on the screen.
 
+    body
+        include sections/header.pug
+
+        .hero-banner
+        .content-wrapper
+            include snippets/registration-form.pug
+        
         script(src='/scripts/global.js')

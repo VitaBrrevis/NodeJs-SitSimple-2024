@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        title Registration Form
+        link(rel='stylesheet', href='/styles/registration-form.css')
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    body
+        .registration-container
+            h1 Register Now!
+            form(action="/submit-registration", method="post")
+                input(type="text" placeholder="Enter your name" required)
+                input(type="email" placeholder="Enter your email" required)
+                input(type="password" placeholder="Enter your password" required)
+                button.button(type="submit") Register
