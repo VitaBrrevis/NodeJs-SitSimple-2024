@@ -1,0 +1,76 @@
+
+.registration-container {
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
+}
+
+
+.registration-container h1 {
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.registration-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    /* font-weight: bold; */
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.registration-container input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.registration-container input[type="file"]::file-selector-button {
+    padding: 12px;
+    background-color: #5f91df;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+   
+}
+
+
+.registration-container .button {
+    width: 100%;
+    height: 55px;
+    text-align: center;
+    padding: 12px;
+    background-color: #5f91df;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.registration-container .button:hover {
+    background-color: #4a78c9;
+}
