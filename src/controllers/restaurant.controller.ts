@@ -2,11 +2,11 @@ import { Controller, Get, Post, Body, Render, UploadedFile, UseInterceptors } fr
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Request } from 'express';
 import { Express } from 'express'; 
-import { RestaurantService } from '../services/restaurant.service';  // Import the service
+import { RestaurantService } from '../services/restaurant.service';  
 
 @Controller()
 export class RestaurantController {
-  constructor(private readonly restaurantService: RestaurantService) {}  // Inject the service
+  constructor(private readonly restaurantService: RestaurantService) {}  
 
   @Get('/restaurantregistration')
   @Render('restaurant-register')
@@ -24,16 +24,19 @@ async registerRestaurant(
 
   let photoPath = null;
   try {
-    
-    // if (file) {
-    //   photoPath = await this.restaurantService.uploadPhoto(file);
-    // }
+    if (file) {
+        console.log('File detected. Proceeding to upload:', file.originalname); 
+        photoPath = await this.restaurantService.uploadPhoto(file);
+      } else {
+        console.error('No file uploaded'); 
+      }
 
-    // Insert restaurant data
+      console.log('Inserting restaurant data. Photo path:', photoPath); 
     await this.restaurantService.insertRestaurantData(establishmentName, email, phone, socialMedia, website, photoPath);
 
     return { success: true };
   } catch (error) {
+    console.error('Error in registerRestaurant:', error);
     return { error: error.message };
   }
 }

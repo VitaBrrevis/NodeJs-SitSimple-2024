@@ -8,23 +8,28 @@ export class RestaurantService {
   private supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpZW9lb2Z5c2pqd2lndXZib3NnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc2ODM1MjUsImV4cCI6MjA0MzI1OTUyNX0.nsj0S3DNK7yj61IPT_IhsiYZ4vq_r9YVloXDeR-OItM';
   private supabase = createClient(this.supabaseUrl, this.supabaseAnonKey);
 
-//   async uploadPhoto(file: Express.Multer.File) {
-//     try {
-//       const { data, error } = await this.supabase
-//         .storage
-//         .from('restaurant_photos')
-//         .upload(`public/${file.originalname}`, file.buffer);
-
-//       if (error) {
-//         console.error('Photo upload error:', error);
-//         throw new Error('Failed to upload photo');
-//       }
-//       return data.path; // Return the photo path for the database
-//     } catch (err) {
-//       console.error('Error in uploadPhoto:', err);
-//       throw err;
-//     }
-//   }
+  async uploadPhoto(file: Express.Multer.File) {
+    try {
+      console.log('Uploading file:', file.originalname); // Log the file name
+  
+      const { data, error } = await this.supabase
+        .storage
+        .from('restaurant_photos')
+        .upload(`public/${file.originalname}`, file.buffer);
+  
+      if (error) {
+        console.error('Photo upload error:', error);
+        throw new Error('Failed to upload photo');
+      }
+  
+      console.log('File uploaded successfully. Path:', data.path); // Log the uploaded file path
+      return data.path; // Return the photo path for the database
+    } catch (err) {
+      console.error('Error in uploadPhoto:', err);
+      throw err;
+    }
+  }
+  
 
   async insertRestaurantData(establishmentName: string, email: string, phone: string, socialMedia: string, website: string, photoPath: string | null) {
     try {

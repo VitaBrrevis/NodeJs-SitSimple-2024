@@ -10,6 +10,7 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'src', 'views'));
   app.useStaticAssets(join(__dirname, '..', 'public'));
 
+  app.enableCors();
   await app.listen(3000);
 }
 bootstrap();
