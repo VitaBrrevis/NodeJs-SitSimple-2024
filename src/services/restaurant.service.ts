@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { createClient } from '@supabase/supabase-js';
-import { Express } from 'express'; 
 
 @Injectable()
 export class RestaurantService {
-  private supabaseUrl = 'https://tieoeofysjjwiguvbosg.supabase.co';
-  private supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpZW9lb2Z5c2pqd2lndXZib3NnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc2ODM1MjUsImV4cCI6MjA0MzI1OTUyNX0.nsj0S3DNK7yj61IPT_IhsiYZ4vq_r9YVloXDeR-OItM';
+  private supabaseUrl = process.env.SUPABASE_URL as string;
+  private supabaseAnonKey = process.env.SUPABASE_ANON_KEY as string;
   private supabase = createClient(this.supabaseUrl, this.supabaseAnonKey);
+
 
   async uploadPhoto(file: Express.Multer.File) {
     try {
-      console.log('Uploading file:', file.originalname); // Log the file name
+      console.log('Uploading file:', file.originalname);
   
       const { data, error } = await this.supabase
         .storage
