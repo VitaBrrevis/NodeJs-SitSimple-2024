@@ -60,5 +60,11 @@ export class RestaurantService {
       throw err;
     }
   }
+
+  async getAllRestaurants() {
+    const { data, error } = await this.supabase.from('restaurant').select('*');
+    if (error) throw new Error('Failed to fetch restaurants');
+    return data;
+  }
   
 }

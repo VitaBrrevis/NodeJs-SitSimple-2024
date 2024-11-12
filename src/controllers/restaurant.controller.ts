@@ -3,11 +3,11 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Response, Request, Express } from 'express';
 import { RestaurantService } from '../services/restaurant.service';  
 
-@Controller()
+@Controller('restaurants')
 export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
 
-  @Get('/restaurantregistration')
+  @Get('/registration')
   @Render('restaurant-register')
   showRegistrationPage() {
     return {};
@@ -35,5 +35,10 @@ export class RestaurantController {
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
+  }
+
+  @Get()
+  async getAllRestaurants() {
+    return await this.restaurantService.getAllRestaurants();
   }
 }
