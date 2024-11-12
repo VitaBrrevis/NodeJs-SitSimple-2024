@@ -67,4 +67,10 @@ export class RestaurantService {
     return data;
   }
   
+  async getRestaurantById(id: string) {
+    const { data, error } = await this.supabase.from('restaurant').select('*').eq('id', id).single();
+    if (error) throw new Error('Failed to fetch restaurant by id');
+    if (!data) throw new Error('Restaurant not found');
+    return data;
+  }
 }
