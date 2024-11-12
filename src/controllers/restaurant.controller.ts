@@ -13,7 +13,7 @@ export class RestaurantController {
     return {};
   }
 
-  @Post('/submit-registration')
+  @Post()
   @UseInterceptors(FileInterceptor('photo'))
   async registerRestaurant(
     @Body() body: Request['body'],
