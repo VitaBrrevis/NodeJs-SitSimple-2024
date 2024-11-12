@@ -79,4 +79,10 @@ export class RestaurantService {
     if (error) throw new Error('Failed to update restaurant');
     return { success: true };
   }
+
+  async deleteRestaurant(id: string) {
+    const { error } = await this.supabase.from('restaurant').delete().eq('id', id);
+    if (error) throw new Error('Failed to delete restaurant');
+    return { success: true }; 
+  }
 }
