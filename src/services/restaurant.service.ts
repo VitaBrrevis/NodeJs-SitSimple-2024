@@ -73,4 +73,10 @@ export class RestaurantService {
     if (!data) throw new Error('Restaurant not found');
     return data;
   }
+
+  async updateRestaurant(id: string, updateData: any) {
+    const { error } = await this.supabase.from('restaurant').update(updateData).eq('id', id);
+    if (error) throw new Error('Failed to update restaurant');
+    return { success: true };
+  }
 }

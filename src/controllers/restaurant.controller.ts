@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Render, UploadedFile, UseInterceptors, Redirect, Res, Param, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Render, UploadedFile, UseInterceptors, Redirect, Res, Param, HttpException, HttpStatus, Put } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Response, Request, Express } from 'express';
 import { RestaurantService } from '../services/restaurant.service';  
@@ -49,5 +49,14 @@ export class RestaurantController {
       throw new HttpException('Restaurant not found', HttpStatus.NOT_FOUND);
     }
     return restaurant;
+  }
+
+  @Put(':id')
+  async updateRestaurant(@Param('id') id: string, @Body() updateData: any) {
+    const updated = await this.restaurantService.updateRestaurant(id, updateData);
+    if (!updated) {
+      throw new HttpException('Restaurant not found or update failed', HttpStatus.NOT_FOUND);
+    }
+    return updated;
   }
 }
