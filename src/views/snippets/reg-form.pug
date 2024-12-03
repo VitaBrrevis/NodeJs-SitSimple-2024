@@ -8,7 +8,7 @@ html
     body
         .registration-container
             h1 Register Your Restaurant!
-            form(action="/submit-registration", method="post", enctype="multipart/form-data")
+            form(action="/restaurants", method="post", enctype="multipart/form-data")
                 .form-group
                     label(for="establishmentName") Name of the restaurant
                     input#establishmentName(type="text" name="establishmentName" required)

@@ -60,5 +60,29 @@ export class RestaurantService {
       throw err;
     }
   }
+
+  async getAllRestaurants() {
+    const { data, error } = await this.supabase.from('restaurant').select('*');
+    if (error) throw new Error('Failed to fetch restaurants');
+    return data;
+  }
   
+  async getRestaurantById(id: string) {
+    const { data, error } = await this.supabase.from('restaurant').select('*').eq('id', id).single();
+    if (error) throw new Error('Failed to fetch restaurant by id');
+    if (!data) throw new Error('Restaurant not found');
+    return data;
+  }
+
+  async updateRestaurant(id: string, updateData: any) {
+    const { error } = await this.supabase.from('restaurant').update(updateData).eq('id', id);
+    if (error) throw new Error('Failed to update restaurant');
+    return { success: true };
+  }
+
+  async deleteRestaurant(id: string) {
+    const { error } = await this.supabase.from('restaurant').delete().eq('id', id);
+    if (error) throw new Error('Failed to delete restaurant');
+    return { success: true }; 
+  }
 }

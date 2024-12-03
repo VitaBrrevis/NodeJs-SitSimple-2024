@@ -1,19 +1,19 @@
-import { Controller, Get, Post, Body, Render, UploadedFile, UseInterceptors, Redirect, Res } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Render, UploadedFile, UseInterceptors, Redirect, Res, Param, HttpException, HttpStatus } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Response, Request, Express } from 'express';
 import { RestaurantService } from '../services/restaurant.service';  
 
-@Controller()
+@Controller('restaurants')
 export class RestaurantController {
   constructor(private readonly restaurantService: RestaurantService) {}
 
-  @Get('/restaurantregistration')
+  @Get('/registration')
   @Render('restaurant-register')
   showRegistrationPage() {
     return {};
   }
 
-  @Post('/submit-registration')
+  @Post()
   @UseInterceptors(FileInterceptor('photo'))
   async registerRestaurant(
     @Body() body: Request['body'],
@@ -35,5 +35,37 @@ export class RestaurantController {
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
+  }
+
+  @Get()
+  async getAllRestaurants() {
+    return await this.restaurantService.getAllRestaurants();
+  }
+
+  @Get(':id')
+  async getRestaurantById(@Param('id') id: string) {
+    const restaurant = await this.restaurantService.getRestaurantById(id);
+    if (!restaurant) {
+      throw new HttpException('Restaurant not found', HttpStatus.NOT_FOUND);
+    }
+    return restaurant;
+  }
+
+  @Put(':id')
+  async updateRestaurant(@Param('id') id: string, @Body() updateData: any) {
+    const updated = await this.restaurantService.updateRestaurant(id, updateData);
+    if (!updated) {
+      throw new HttpException('Restaurant not found or update failed', HttpStatus.NOT_FOUND);
+    }
+    return updated;
+  }
+
+  @Delete(':id')
+  async deleteRestaurant(@Param('id') id: string) {
+    const deleted = await this.restaurantService.deleteRestaurant(id);
+    if (!deleted) {
+      throw new HttpException('Restaurant not found or delete failed', HttpStatus.NOT_FOUND);
+    }
+    return deleted;
   }
 }
