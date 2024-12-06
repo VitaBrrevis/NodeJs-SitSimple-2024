@@ -5,7 +5,7 @@ config();
 
 @Injectable()
 export class ReservationService {
-  private supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+  private supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
 
   async createReservation(tableId: number, userId: number, beginningTime: string, endingTime: string, capacityRequested: number) {
     if (new Date(beginningTime) >= new Date(endingTime)) {
