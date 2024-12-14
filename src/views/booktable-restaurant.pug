@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Book a Table
+    body
+        include sections/header.pug
+        h1 Book a Table at #{restaurant.name}
+        form(action=`/booktable/${restaurant.id}`, method="POST")
+            label(for="userId") User ID:
+            input(type="number", id="userId", name="userId", required)
+            label(for="tableId") Table ID:
+            input(type="number", id="tableId", name="tableId", required)
+            label(for="beginningTime") Beginning Time:
+            input(type="datetime-local", id="beginningTime", name="beginningTime", required)
+            label(for="endingTime") Ending Time:
+            input(type="datetime-local", id="endingTime", name="endingTime", required)
+            button(type="submit") Book Table
+
+        include sections/footer.pug
+        script(src='/scripts/global.js')

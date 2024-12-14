@@ -1,0 +1,63 @@
+.booktable-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 56px;
+}
+
+.booktable-container h1 {
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.booktable-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.booktable-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.booktable-container .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.booktable-container input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.booktable-container .button {
+    width: 100%;
+    height: 55px;
+    text-align: center;
+    padding: 12px;
+    background-color: #5f91df;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.booktable-container .button:hover {
+    background-color: #4a78c9;
+}
