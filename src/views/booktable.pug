@@ -11,15 +11,19 @@ html(lang="en")
 
         h1 Book a Table
 
-        form(action="/search" method="GET")
+        form(action="/booktable/search" method="GET")
             div
                 label(for="date") Date:
-                input(type="date" id="date" name="date" required)
+                input(type="date" id="date" name="date")
+            p
             div
                 label(for="city") City:
-                input(type="text" id="city" name="city" required)
+                select(id="city" name="city")
+                  each city in cities
+                      option(value=city.id) #{city.city}
+            p
             button(type="submit" class="submit-button") Search
-
+            p
         if error
             p #{error}
         else
@@ -28,7 +32,7 @@ html(lang="en")
                 .carousel-inner
                   each restaurant in restaurants
                       .carousel-item
-                          a(href=`/booktable/${restaurant.id}`)
+                          a(href=`/booktable/show/${restaurant.id}`)
                               img(src=`/images/${restaurant.photo_restaurant}` alt=`${restaurant.name}`)
                           h2 #{restaurant.name}
                 button.carousel-next Next

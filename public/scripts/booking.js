@@ -8,8 +8,48 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
   const beginningDateTime = new Date(`${date}T${time}`);
   const endingDateTime = new Date(beginningDateTime.getTime() + duration * 60 * 60 * 1000);
 
-  document.getElementById('beginningTime').value = beginningDateTime.toISOString();
-  document.getElementById('endingTime').value = endingDateTime.toISOString();
+  const data = {
+    beginningTime: beginningDateTime.toISOString(),
+    endingTime: endingDateTime.toISOString()
+  };
 
-  this.submit();
+  fetch(this.action, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(result => {
+      if (result.error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Error: ${result.error}`,
+          confirmButtonText: 'OK'
+        }).then(() => {
+          window.location.href = '/booktable';
+        });
+      } else {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Reservation created successfully!',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          window.location.href = '/booktable';
+        });
+      }
+    })
+    .catch(error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Error: ${error.message}`,
+        confirmButtonText: 'OK'
+      }).then(() => {
+        window.location.href = '/booktable';
+      });
+    });
 });

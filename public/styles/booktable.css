@@ -19,13 +19,26 @@
 
 input[type="date"],
 input[type="time"],
-input[type="number"] {
+input[type="text"],
+input[type="number"]
+select  {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
 
+label {
+    font-size: 18px; /* Increase label font size */
+    font-weight: bold;
+}
+
+select {
+    padding: 12px; /* Increase padding for select */
+    font-size: 18px; /* Increase font size for select content */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 .group-controls {
     display: flex;
     align-items: center;
