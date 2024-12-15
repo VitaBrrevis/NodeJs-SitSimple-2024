@@ -1,6 +1,6 @@
 .carousel {
     position: relative;
-    width: 100%;
+    width: 80%;
     overflow: hidden;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
@@ -17,7 +17,7 @@
     flex: 0 0 50%; /* Show 2 items at a time */
     text-align: center;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 1px;
 }
 
 .carousel-item img {

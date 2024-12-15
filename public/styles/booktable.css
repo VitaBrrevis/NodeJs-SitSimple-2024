@@ -1,63 +1,93 @@
-.booktable-container {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 40px;
+
+.booking-form {
+    background: #fff;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    margin: auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.group-controls {
+    display: flex;
     align-items: center;
-    margin-bottom: 56px;
+    gap: 10px;
 }
 
-.booktable-container h1 {
-    margin-bottom: 40px;
-    color: #333;
+button.decrement,
+button.increment {
+    padding: 10px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
 }
 
-.booktable-container form {
-    width: 100%;
+.zone-options {
     display: flex;
-    flex-direction: column;
+    gap: 10px;
 }
 
-.booktable-container .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.booktable-container .form-group input {
-    width: 100%;
-    padding: 10px;
+.zone-option {
+    padding: 10px 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
 }
 
-.booktable-container input {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1.2rem;
+.zone-option.active {
+    background-color: #4CAF50;
+    color: #fff;
+    border-color: #4CAF50;
 }
 
-.booktable-container .button {
-    width: 100%;
-    height: 55px;
-    text-align: center;
-    padding: 12px;
-    background-color: #5f91df;
+.confirmation-message {
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button.submit-button {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
     border: none;
     border-radius: 5px;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-transform: uppercase;
 }
 
-.booktable-container .button:hover {
-    background-color: #4a78c9;
+button.submit-button:hover {
+    background-color: #45a049;
+}
+
+
+.restaurant-image {
+    display: block;
+    max-width: 500px;
+    margin: 0 auto;
 }
