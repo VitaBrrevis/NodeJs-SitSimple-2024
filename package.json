@@ -11,7 +11,7 @@
   },
   "scripts": {
     "format": "prettier --write .",
-    "lint": "eslint . --ext .js,.pug",
+    "lint": "eslint .",
     "prepare": "husky install",
     "test": "echo \"No tests available\" && exit 0",
     "start": "nest start",
@@ -25,5 +25,8 @@
     "@supabase/supabase-js": "^2.45.6",
     "dotenv": "^16.4.5",
     "pug": "^3.0.3"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint"
   }
 }
