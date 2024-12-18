@@ -8,7 +8,6 @@ import { RestaurantModule } from './modules/restaurant.module';
 import { BookingModule } from './modules/booking.module';
 import { BookingController } from './controllers/booking.controller';
 
-
 @Module({
 
   imports: [ReservationModule, RestaurantModule, BookingModule],
