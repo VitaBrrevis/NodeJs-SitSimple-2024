@@ -24,6 +24,16 @@ html(lang="en")
             div.form-group
                 label(for="duration") Duration:
                 input(type="number", id="duration", name="duration", required value="2")
+            div.form-group
+                label(for="room") Room:
+                select(id="room", name="room", required, onchange="updateTables()")
+                  each room in rooms
+                      option(value=room.id) #{room.area} - #{room.location}
+
+            div.form-group
+                label(for="table") Table:
+                select(id="table", name="table", required)
+                    option(value="") Select a room first
 
             div.confirmation-message
                 p ⚠️ We will confirm your booking as soon as possible.

@@ -20,7 +20,7 @@
 input[type="date"],
 input[type="time"],
 input[type="text"],
-input[type="number"]
+input[type="number"],
 select  {
     padding: 10px;
     border: 1px solid #ccc;
@@ -103,4 +103,23 @@ button.submit-button:hover {
     display: block;
     max-width: 500px;
     margin: 0 auto;
+}
+
+
+/* Add custom styles for Room and Table fields */
+select#room,
+select#table {
+    padding: 12px;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select#room:focus,
+select#table:focus {
+    border-color: #45a049;
+    box-shadow: 0 0 5px rgba(69, 160, 73, 0.5);
 }

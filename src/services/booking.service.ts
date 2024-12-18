@@ -68,38 +68,59 @@ export class BookingService {
     return restaurants;
   }
 
-  async createReservation(restaurantId: string, beginningTime: string, endingTime: string) {
-    // Find the table_id associated with the restaurant
-    const { data: room, error: roomError } = await this.supabase
+  async getRoomsByRestaurantId(restaurantId: string) {
+    const { data: rooms, error } = await this.supabase
       .from('room')
-      .select('id')
-      .eq('restaurant_id', restaurantId)
-      .limit(1)
-      .single();
+      .select('*')
+      .eq('restaurant_id', restaurantId);
 
-    if (roomError || !room) {
-      throw new Error('Room not found for the given restaurant.');
+    if (error) {
+      throw new Error('Error fetching rooms.');
     }
-    const { data: table, error: tableError } = await this.supabase
+
+    return rooms;
+  }
+
+  async getTablesByRoomId(roomId: string) {
+    const { data: tables, error } = await this.supabase
       .from('table')
-      .select('id')
-      .eq('room_id', room.id)
-      .limit(1)
-      .single();
+      .select('*')
+      .eq('room_id', roomId);
 
-    if (tableError || !room) {
-      throw new Error('Room not found for the given restaurant.');
+    if (error) {
+      throw new Error('Error fetching tables.');
     }
-    
+
+    return tables;
+  }
+
+  async createReservation(tableId: string, beginningTime: string, endingTime: string) {
+
     // Convert beginningTime and endingTime to timestamp format
     const beginningTimestamp = new Date(beginningTime).toISOString();
     const endingTimestamp = new Date(endingTime).toISOString();
 
+    // Check for overlapping reservations
+    const { data: overlappingReservations, error: overlapError } = await this.supabase
+      .from('reservation')
+      .select('id')
+      .eq('table_id', tableId)
+      .or(`and(beginning_at.lte.${endingTimestamp},ending_at.gte.${beginningTimestamp})`);
+
+    if (overlapError) {
+      throw new Error('Error checking for overlapping reservations.');
+    }
+
+    if (overlappingReservations.length > 0) {
+      throw new Error('The table is occupied at the selected time.');
+    }
+
+    // Create the reservation
     const { data: reservation, error: reservationError } = await this.supabase
       .from('reservation')
       .insert({
         user_id: 1, // Always use user_id 1
-        table_id: table.id,
+        table_id: tableId,
         beginning_at: beginningTimestamp,
         ending_at: endingTimestamp,
       })
