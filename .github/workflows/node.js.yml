@@ -33,4 +33,4 @@ jobs:
         run: |
           echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} " >> $GITHUB_ENV
           echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }} " >> $GITHUB_ENV
-      - run: npm run start
+      - run: UPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} SUPABASE_URL=${{ secrets.SUPABASE_URL }} npm run start
