@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-s-2vcpu-4gb-fra1-01
+    runs-on: self-hosted
 
     strategy:
       matrix:
