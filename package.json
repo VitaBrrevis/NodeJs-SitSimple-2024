@@ -17,7 +17,7 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "prepare": "husky install",
-    "test": "echo \"No tests available\" && exit 0",
+    "test": "jest",
     "start": "nest start",
     "build": "nest build"
   },
