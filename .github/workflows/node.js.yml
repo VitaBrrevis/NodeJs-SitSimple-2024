@@ -30,5 +30,7 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
       - name: Set up environment variables
-        run: echo "MY_SECRET_KEY=${{ secrets.MY_SECRET_KEY }}" >> $GITHUB_ENV
+        run: |
+          echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} " >> $GITHUB_ENV
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }} " >> $GITHUB_ENV
       - run: npm run start
