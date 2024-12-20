@@ -29,8 +29,10 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
-#      - name: Set up environment variables
-#        run: |
-#          echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} " >> $GITHUB_ENV
-#          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }} " >> $GITHUB_ENV
-#      - run: UPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }} SUPABASE_URL=${{ secrets.SUPABASE_URL }} npm run start
+      - name: Deploy with PM2
+        env:
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        run: |
+          pm2 stop ecosystem.config.js || true
+          pm2 start ecosystem.config.js
