@@ -17,6 +17,8 @@ sticky-header.header-wrapper
                 else
                     li.header-navigation__item-wrapper
                         span.header-navigation__item Welcome #{user.name}
+                    li.header-navigation__item-wrapper
+                        a(href='/logout').header-navigation__item.header-navigation__item--button.button Logout
         mega-menu-opener.section-header__menu-drawer
             .section-header__menu-icons
                 include ../snippets/icon-cross

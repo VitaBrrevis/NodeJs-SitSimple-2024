@@ -7,7 +7,7 @@ export class LoginController {
     constructor(private readonly loginService: LoginService) {}
 
     @Get()
-    @Render('login') // Рендеримо шаблон login.pug
+    @Render('login') 
     showLoginPage() {
         return {};
     }
@@ -20,13 +20,12 @@ export class LoginController {
         const user = await this.loginService.validateUser(body.email, body.password);
 
         if (user) {
-            // Якщо користувач знайдений, встановлюємо сесію
             res.cookie('user', JSON.stringify({ id: user.id, name: user.name }), {
                 httpOnly: true,
+                maxAge: 24 * 60 * 60 * 1000, 
             });
-            return res.redirect('/'); // Перенаправляємо на головну
+            return res.redirect('/'); // 
         } else {
-            // Якщо дані некоректні, показуємо помилку
             return res.render('login', { error: 'Invalid email or password' });
         }
     }

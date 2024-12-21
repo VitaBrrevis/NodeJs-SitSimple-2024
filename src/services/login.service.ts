@@ -15,14 +15,13 @@ export class LoginService {
             .single();
 
         if (error || !user) {
-            return null; // Користувач не знайдений
+            return null; 
         }
 
-        // Просте порівняння пароля. Для хешованих паролів використовуйте bcrypt.
-        if (user.password === password) {
+        if (user.password === password) { 
             return user;
         }
 
-        return null; // Невірний пароль
+        return null;
     }
 }
