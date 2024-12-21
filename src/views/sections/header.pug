@@ -11,8 +11,12 @@ sticky-header.header-wrapper
                     a(href='/restaurants/registration').header-navigation__item List Your Restaurant
                 li.header-navigation__item-wrapper
                     a(href='/booktable').header-navigation__item Book Your Table
-                li.header-navigation__item-wrapper
-                    a(href='/login').header-navigation__item.header-navigation__item--button.button LOGIN
+                if !user
+                    li.header-navigation__item-wrapper
+                        a(href='/login').header-navigation__item.header-navigation__item--button.button LOGIN
+                else
+                    li.header-navigation__item-wrapper
+                        span.header-navigation__item Welcome #{user.name}
         mega-menu-opener.section-header__menu-drawer
             .section-header__menu-icons
                 include ../snippets/icon-cross
