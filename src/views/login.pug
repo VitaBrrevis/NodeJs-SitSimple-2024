@@ -9,7 +9,8 @@ html
             h1 Login
             if error
                 p.error-message #{error}
-            form(action="/login", method="post")
+            form(action="/login" method="post")
+                input(type="hidden" name="redirect" value=redirect)
                 .form-group
                     label(for="email") Email
                     input#email(type="email" name="email" required)

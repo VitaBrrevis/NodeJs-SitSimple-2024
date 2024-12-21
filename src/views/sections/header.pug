@@ -8,9 +8,15 @@ sticky-header.header-wrapper
         nav.section-header__header-navigation-wrapper
             ul.section-header__header-navigation
                 li.header-navigation__item-wrapper
-                    a(href='/restaurants/registration').header-navigation__item List Your Restaurant
+                    a(
+                        href='/restaurants/registration'
+                        onclick='return redirectToLogin(event, "/restaurants/registration");'
+                    ).header-navigation__item List Your Restaurant
                 li.header-navigation__item-wrapper
-                    a(href='/booktable').header-navigation__item Book Your Table
+                    a(
+                        href='/booktable'
+                        onclick='return redirectToLogin(event, "/booktable");'
+                    ).header-navigation__item Book Your Table
                 if !user
                     li.header-navigation__item-wrapper
                         a(href='/login').header-navigation__item.header-navigation__item--button.button LOGIN
@@ -18,9 +24,52 @@ sticky-header.header-wrapper
                     li.header-navigation__item-wrapper
                         span.header-navigation__item Welcome #{user.name}
                     li.header-navigation__item-wrapper
-                        a(href='/logout').header-navigation__item.header-navigation__item--button.button Logout
+                        a(
+                            href='/logout'
+                            onclick='event.preventDefault(); handleLogout();'
+                        ).header-navigation__item.header-navigation__item--button.button Logout
         mega-menu-opener.section-header__menu-drawer
             .section-header__menu-icons
                 include ../snippets/icon-cross
     mega-menu 
         include ../snippets/header-drawer
+
+script.
+    function redirectToLogin(event, targetUrl) {
+        if (!user) { // Перевірка наявності змінної user
+            event.preventDefault();
+            window.location.href = `/login?redirect=${encodeURIComponent(targetUrl)}`;
+            return false;
+        }
+        return true;
+    }
+
+    function handleLogout() {
+        fetch('/logout', {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                const navList = document.querySelector('.section-header__header-navigation');
+                if (navList) {
+                    navList.innerHTML = `
+                        <li class="header-navigation__item-wrapper">
+                            <a href="/restaurants/registration" onclick="return redirectToLogin(event, '/restaurants/registration');" class="header-navigation__item">List Your Restaurant</a>
+                        </li>
+                        <li class="header-navigation__item-wrapper">
+                            <a href="/booktable" onclick="return redirectToLogin(event, '/booktable');" class="header-navigation__item">Book Your Table</a>
+                        </li>
+                        <li class="header-navigation__item-wrapper">
+                            <a href="/login" class="header-navigation__item header-navigation__item--button button">LOGIN</a>
+                        </li>
+                    `;
+                }
+            } else {
+                console.error('Failed to logout');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }

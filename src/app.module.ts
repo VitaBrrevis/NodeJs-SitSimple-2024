@@ -10,10 +10,13 @@ import { LoginController } from './controllers/login.controller';
 import { BookingController } from './controllers/booking.controller';
 import { LoginModule } from './modules/login.module';
 import{LoginService} from './services/login.service'
+import {LogoutController} from './controllers/logout.controller'
+import {LogoutModule} from './modules/logout.module'
+
 @Module({
 
-  imports: [ReservationModule, RestaurantModule, BookingModule, LoginModule],
-  controllers: [AppController, RestaurantController, BookingController, LoginController],
+  imports: [ReservationModule, RestaurantModule, BookingModule, LoginModule, LogoutModule],
+  controllers: [AppController, RestaurantController, BookingController, LoginController, LogoutController],
   providers: [AppService, RestaurantService, LoginService],
   exports: [AppService],
 })

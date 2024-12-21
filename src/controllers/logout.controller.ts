@@ -5,7 +5,15 @@ import { Response } from 'express';
 export class LogoutController {
     @Get()
     logout(@Res() res: Response) {
+    
         res.clearCookie('user');
+
+        
+        if (res.req.xhr) {
+            return res.json({ success: true });
+        }
+
+        
         return res.redirect('/login');
     }
 }
