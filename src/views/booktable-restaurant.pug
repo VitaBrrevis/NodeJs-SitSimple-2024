@@ -1,0 +1,52 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Book a Table
+        link(rel="stylesheet" href="/styles/booktable.css")
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css")
+
+    body
+        include sections/header.pug
+        h1 Book a Table at #{restaurant.name}
+        img.restaurant-image(src=`/images/${restaurant.photo_restaurant}`, alt=`Image of ${restaurant.name}`)
+
+        form(action=`/booktable/reserve/${restaurant.id}`, method="POST", id="bookingForm", class="booking-form")
+            div.form-group
+                label(for="date") Date:
+                input(type="date", id="date", name="date", required value=`${todayDate}`)
+
+            div.form-group
+                label(for="time") Time:
+                input(type="time", id="time", name="time", required)
+
+            div.form-group
+                label(for="duration") Duration:
+                input(type="number", id="duration", name="duration", required value="2")
+            div.form-group
+                label(for="room") Room:
+                select(id="room", name="room", required, onchange="updateTables()")
+                  each room in rooms
+                      option(value=room.id) #{room.area} - #{room.location}
+
+            div.form-group
+                label(for="table") Table:
+                select(id="table", name="table", required)
+                    option(value="") Select a room first
+
+            div.confirmation-message
+                p ⚠️ We will confirm your booking as soon as possible.
+
+            button(type="submit", class="submit-button") Book Table
+
+        // Popup message
+        div#popupMessage.popup-message(style="display: none;")
+            div.popup-content
+                p#popupText
+                button#popupOkButton OK
+
+        include sections/footer.pug
+        script(src='/scripts/global.js')
+        script(src='/scripts/booking.js')
+        script(src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js")

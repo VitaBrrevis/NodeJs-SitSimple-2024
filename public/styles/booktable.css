@@ -1,0 +1,125 @@
+
+.booking-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="text"],
+input[type="number"],
+select  {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+label {
+    font-size: 18px; /* Increase label font size */
+    font-weight: bold;
+}
+
+select {
+    padding: 12px; /* Increase padding for select */
+    font-size: 18px; /* Increase font size for select content */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.group-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button.decrement,
+button.increment {
+    padding: 10px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.zone-options {
+    display: flex;
+    gap: 10px;
+}
+
+.zone-option {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.zone-option.active {
+    background-color: #4CAF50;
+    color: #fff;
+    border-color: #4CAF50;
+}
+
+.confirmation-message {
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button.submit-button {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+button.submit-button:hover {
+    background-color: #45a049;
+}
+
+
+.restaurant-image {
+    display: block;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+
+/* Add custom styles for Room and Table fields */
+select#room,
+select#table {
+    padding: 12px;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select#room:focus,
+select#table:focus {
+    border-color: #45a049;
+    box-shadow: 0 0 5px rgba(69, 160, 73, 0.5);
+}

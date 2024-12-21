@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Book a Table
+        link(rel="stylesheet" href="/styles/booktable.css")
+        link(rel="stylesheet" href="/styles/carousel.css")
+    body
+        include sections/header.pug
+
+        h1 Book a Table
+
+        form(action="/booktable/search" method="GET")
+            div
+                label(for="date") Date:
+                input(type="date" id="date" name="date")
+            p
+            div
+                label(for="city") City:
+                select(id="city" name="city")
+                  each city in cities
+                      option(value=city.id) #{city.city}
+            p
+            button(type="submit" class="submit-button") Search
+            p
+        if error
+            p #{error}
+        else
+            .carousel
+                button.carousel-prev Previous
+                .carousel-inner
+                  each restaurant in restaurants
+                      .carousel-item
+                          a(href=`/booktable/show/${restaurant.id}`)
+                              img(src=`/images/${restaurant.photo_restaurant}` alt=`${restaurant.name}`)
+                          h2 #{restaurant.name}
+                button.carousel-next Next
+
+        include sections/footer.pug
+        script(src='/scripts/carousel.js')
+        script(src='/scripts/global.js')
