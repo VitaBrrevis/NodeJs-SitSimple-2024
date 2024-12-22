@@ -12,12 +12,15 @@ import { LoginModule } from './modules/login.module';
 import{LoginService} from './services/login.service'
 import {LogoutController} from './controllers/logout.controller'
 import {LogoutModule} from './modules/logout.module'
+import { RegisterController } from './controllers/register.controller';
+import { RegisterModule } from './modules/register.module'; 
+import { RegisterService } from './services/register.service';  
 
 @Module({
 
-  imports: [ReservationModule, RestaurantModule, BookingModule, LoginModule, LogoutModule],
-  controllers: [AppController, RestaurantController, BookingController, LoginController, LogoutController],
-  providers: [AppService, RestaurantService, LoginService],
+  imports: [ReservationModule, RestaurantModule, BookingModule, LoginModule, LogoutModule, RegisterModule],
+  controllers: [AppController, RestaurantController, BookingController, LoginController, LogoutController, RegisterController],
+  providers: [AppService, RestaurantService, LoginService, RegisterService],
   exports: [AppService],
 })
 export class AppModule {}

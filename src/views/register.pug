@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title Register
+        link(rel='stylesheet', href='/styles/register.css')
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    body
+        .register-container
+            h1 Register
+            if error
+                p.error-message #{error}
+            form(action="/register" method="post")
+                .form-group
+                    label(for="name") Name
+                    input#name(type="text" name="name" required)
+                .form-group
+                    label(for="email") Email
+                    input#email(type="email" name="email" required)
+                .form-group
+                    label(for="password") Password
+                    input#password(type="password" name="password" required)
+                button.register-button(type="submit") Register
+
+            .login-question
+                span Already have an account?
+                a.login-link(href="/login") Login
