@@ -56,6 +56,7 @@ video.hero-banner__ground-video {
 .banner-content__cta-button {
     margin: 0 auto;
     margin-top: 40px;
+    text-decoration: none;
 }
 
 .banner-content__heading {

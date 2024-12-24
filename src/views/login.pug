@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title Login
+        link(rel='stylesheet', href='/styles/login.css')
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    body
+        .login-container
+            h1 Login
+            if error
+                p.error-message #{error}
+            form(action="/login" method="post")
+                input(type="hidden" name="redirect" value=redirect)
+                .form-group
+                    label(for="email") Email
+                    input#email(type="email" name="email" required)
+                .form-group
+                    label(for="password") Password
+                    input#password(type="password" name="password" required)
+                button.login-button(type="submit") Login
+
+            .signup-question
+                span Don't have an account yet?
+                a.signup-link(href="/register") Register
