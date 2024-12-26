@@ -63,8 +63,7 @@
 
 ![Lighthouse Report](README.assets/lighthouse.png)
 - <span style="color: red;">Performance result was collected by means of Webpagetest.org [https://www.webpagetest.org/result/241222_AiDcX1_4P2/](https://www.webpagetest.org/result/241222_AiDcX1_4P2/). </span>
-- Підготувати тест навантаження вашої системи який виконуватиме ті сценарії використання що покривають всі елементи системи та є найбільш типовими для звичайної роботи сервісу. Запустити сервер с профайлером, запустить тест навантаження та зібрати дані. Проаналізувати репорт.
-
+- Підготувати тест навантаження вашої системи який виконуватиме ті сценарії використання що покривають всі елементи системи та є найбільш типовими для звичайної роботи сервісу. Запустити сервер с профайлером, запустить тест навантаження та зібрати дані. Проаналізувати репорт. <span style="color: red;">(implemented in [loadtest.sh](./loadtest.sh))</span> ![Load Test](README.assets/loadtest.png)
 - Аналіз запитів до БД вбудованими інструментами <span style="color: red;">(unfortunately, supabase does not have SQL profiler).</span>
 
 **Лабораторна робота №9 Виправляємо ботлнеки і вчимося виносити код з проекту**
