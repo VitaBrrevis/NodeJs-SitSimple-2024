@@ -15,7 +15,6 @@ export class LoginController {
     @Post()
     async handleLogin(
         @Body() body: { email: string; password: string, redirect: string },
-        @Query('redirect') redirect: string,
         @Res() res: Response
     ) {
         const user = await this.loginService.validateUser(body.email, body.password);
