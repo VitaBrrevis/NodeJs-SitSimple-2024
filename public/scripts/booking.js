@@ -51,7 +51,6 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
       });
     });
 });
-
 async function updateTables() {
   const roomId = document.getElementById('room').value;
   const tableSelect = document.getElementById('table');

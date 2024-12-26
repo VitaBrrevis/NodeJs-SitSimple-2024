@@ -14,12 +14,11 @@ export class LoginController {
 
     @Post()
     async handleLogin(
-        @Body() body: { email: string; password: string },
-        @Query('redirect') redirect: string,
+        @Body() body: { email: string; password: string, redirect: string },
         @Res() res: Response
     ) {
         const user = await this.loginService.validateUser(body.email, body.password);
-
+        const redirect  = body.redirect;
         if (user) {
             res.cookie('user', JSON.stringify({ id: user.id, name: user.name }), {
                 httpOnly: true,

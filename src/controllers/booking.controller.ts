@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Param, Render, Query, Body } from '@nestjs/common';
+import { Controller, Get, Post, Param, Render, Query, Body, Req , Res} from '@nestjs/common';
 import { BookingService } from '../services/booking.service';
 import { AppService } from '../app.service';
+import { Request } from 'express';
 
 @Controller('booktable')
 export class BookingController {
@@ -25,20 +26,29 @@ export class BookingController {
   }
 
   @Get('show/:restaurant_id')
-  @Render('booktable-restaurant')
-  async showRestaurantBookingPage(@Param('restaurant_id') restaurantId: string) {
+
+  async showRestaurantBookingPage(@Param('restaurant_id') restaurantId: string,
+                                  @Req() req: Request,
+                                  @Res() res) {
     try {
+      const userId = req.cookies.user ? JSON.parse(req.cookies.user).id : null;
+      if (!userId) {
+        res.redirect(`/login?redirect=${encodeURIComponent(req.originalUrl)}`);
+        return;
+      }
       const restaurant = await this.bookingService.getRestaurantById(restaurantId);
       const rooms = await this.bookingService.getRoomsByRestaurantId(restaurantId);
       /**
        *   const tables = await this.bookingService.getTablesByRoomIds(rooms.map(room => room.id));
         */
-      return {
+
+      return res.render('booktable-restaurant',{
         restaurant,
         rooms,
         headerContent: this.appService.getHeaderContent(),
         footerContent: this.appService.getFooterContent(),
-      };
+      });
+
     } catch (error) {
       return { error: error.message };
     }
@@ -73,12 +83,19 @@ export class BookingController {
   @Post('reserve/:table_id')
   async createReservation(
     @Param('table_id') tableId: string,
-    @Body() body: { beginningTime: string, endingTime: string }) {
+    @Body() body: { beginningTime: string, endingTime: string },
+    @Req() req: Request,
+    @Res() res) {
     try {
+      const userId = req.cookies.user ? JSON.parse(req.cookies.user).id : null;
+      if (!userId) {
+        res.redirect(`/login?redirect=${encodeURIComponent(req.originalUrl)}`);
+        return;
+      }
       const reservation = await this.bookingService.createReservation(tableId, body.beginningTime, body.endingTime);
-      return { reservation };
+      res.status(200).send({}).end()
     } catch (error) {
-      return { error: error.message };
+      res.status(400).send({error: error.message}).end();
     }
   }
 }
