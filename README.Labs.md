@@ -82,4 +82,4 @@
 
 - Переписуємо виділену лібу на TS.
 
-[BookingService]('./booking-library/src/BookingService.ts)
+[BookingService](./booking-library/src/BookingService.ts)
