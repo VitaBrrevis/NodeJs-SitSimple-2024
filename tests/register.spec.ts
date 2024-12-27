@@ -1,16 +1,8 @@
-const { chromium } = require('playwright');
+import { test, expect } from '@playwright/test';
 
-(async () => {
-  const browser = await chromium.launch({
-    headless: false
-  });
-  const context = await browser.newContext();
-  const page = await context.newPage();
+test('test', async ({ page }) => {
   await page.goto('http://46.101.111.107:3000/');
   await page.getByRole('link', { name: 'List Your Restaurant' }).click();
   await expect(page.getByRole('heading', { name: 'Register Your Restaurant!' })).toBeVisible();
-
-  // ---------------------
-  await context.close();
-  await browser.close();
-})();
+  await expect(page.getByRole('button', { name: 'Register' })).toBeVisible();
+});
