@@ -41,7 +41,7 @@
 
 - Повністю покрити якийсь з модулів UNIT-тестами <span style="color: red;">(module booking is covered with the unit test [`src/modules/booking.module.spec.ts`](./src/modules/booking.module.spec.ts)) </span>
 
-- Налаштувати інтеграційні тести таким чином, щоб ви могли запустити всі залежні модулі перед тестами. (наприклад підключитись до бази, запустити хттп сервер і тестувати його роботу) <span style="color: red;">(Integration test was implemented for booking module. [`src/modules/booking.module.int.spec.ts`](./src/modules/booking.module.int.spec.ts). It launches an express server to check the booking controller path `/booktable`.) </span>
+- Налаштувати інтеграційні тести таким чином, щоб ви могли запустити всі залежні модулі перед тестами. (наприклад підключитись до бази, запустити хттп сервер і тестувати його роботу) <span style="color: red;">(Integration test was implemented for booking module. [`src/modules/booking.module.int.spec.ts`](./src/modules/booking.module.int.spec.ts). It launches an express server to check the booking controller path `/booktable`. It does the testing with the DB usage) </span>
 
 - Налаштувати Е2Е тестування, що б охоплювало всі елементи системи <span style="color: red;">(the E2E test has been developed in Playwright UI testing tool [`tests/booking.spec.ts`](./tests/booking.spec.ts)) </span>
 
@@ -63,7 +63,7 @@
 
 ![Lighthouse Report](README.assets/lighthouse.png)
 - <span style="color: red;">Performance result was collected by means of Webpagetest.org [https://www.webpagetest.org/result/241222_AiDcX1_4P2/](https://www.webpagetest.org/result/241222_AiDcX1_4P2/). </span>
-- Підготувати тест навантаження вашої системи який виконуватиме ті сценарії використання що покривають всі елементи системи та є найбільш типовими для звичайної роботи сервісу. Запустити сервер с профайлером, запустить тест навантаження та зібрати дані. Проаналізувати репорт. <span style="color: red;">(implemented in [loadtest.sh](./loadtest.sh))</span> ![Load Test](README.assets/loadtest.png)
+- Підготувати тест навантаження вашої системи який виконуватиме ті сценарії використання що покривають всі елементи системи та є найбільш типовими для звичайної роботи сервісу. Запустити сервер с профайлером, запустить тест навантаження та зібрати дані. Проаналізувати репорт. <span style="color: red;">(implemented in [jmeter_loadtest_booking.jmx](README.assets/jmeter_loadtest_booking.jmx))</span> ![image from README.assets/loadtest2.png](README.assets/loadtest2.png). Results of server hits vs. host CPU and memory usage ![image from README.assets/jmeter_loadtest_results.png](README.assets/jmeter_loadtest_results.png). The profiling data collected during the test is in file [load_plus_profiler.txt file](README.assets/load_plus_profiler.txt). The main computational consumers are babel and pug moduls. 
 - Аналіз запитів до БД вбудованими інструментами <span style="color: red;">(unfortunately, supabase does not have SQL profiler).</span>
 
 **Лабораторна робота №9 Виправляємо ботлнеки і вчимося виносити код з проекту**
